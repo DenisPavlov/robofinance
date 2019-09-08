@@ -7,6 +7,7 @@ import my.denispavlov.robofinance.util.SexConverter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Data
 @Entity
@@ -17,10 +18,15 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Size(max = 255)
     @ApiModelProperty(name = "Имя", example = "Иван", position = 1)
     private String firstName;
+
+    @Size(max = 255)
     @ApiModelProperty(name = "Фамилия", example = "Иванов", position = 2)
     private String lastName;
+
+    @Size(max = 255)
     @ApiModelProperty(name = "Отчество", example = "Иванович", position = 3)
     private String middleName;
 
