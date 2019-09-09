@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  postgres:
+    image: postgres
+    network_mode: bridge
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: robofinance
+      POSTGRES_PASSWORD: robofinance
+      POSTGRES_DB: robofinance
+  app:
+    image: denispavlov1989/robofinance
+    network_mode: bridge
+    ports:
+      - 8090:8090
+    depends_on:
+      - postgres
+    links:
+      - postgres
